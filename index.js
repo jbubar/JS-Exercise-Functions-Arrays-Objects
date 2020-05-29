@@ -2,11 +2,11 @@
 
 /**
  * ### Challenge `addNumbers`
- * 
+ *
  * @instructions
  * This function should be able to take two numbers as arguments
  * and return the result of adding them together.
- * 
+ *
  * For example, if we invoke `addNumbers` passing 5 and 3,
  * the returned value should be 8.
  *
@@ -23,70 +23,91 @@ function addNumbers(num1, num2) {
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
 
-
+function display(challengeName, arg1, arg2, funct){
+  if (arg2 == null || arg2 == undefined){
+    console.log(`\n\n*****   Challenge ${challengeName} *****\nif you call the function: \n\n\t ${challengeName}(${arg1}); \n\nit would return: `)
+  }
+  else{
+    console.log(`\n\n*****   Challenge ${challengeName} *****\nif you call the function: \n\n\t ${challengeName}(${arg1}, ${arg2}); \n\nit would return: `)
+  }
+    console.log(funct);
+}
 /**
  * ### Challenge `sayGoodbye`
- * 
+ *
  * @instructions
  * This function should take an a name as an argument,
  * and return a string that says 'Goodbye, {name}. Have a great day.'
- * 
+ *
  * For example, if we invoke `sayGoodbye`
  * passing 'Andy' as the argument,
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
- * 
+ *
 */
-function sayGoodbye(/* code here */) {
-  /* code here */
+function sayGoodbye(name) {
+  return `Goodbye, ${name}. Have a great day.`;
 }
+console.log(
+  "\n\n*****   Challenge sayGoodbye *****\nif you call the function: \n\n\tsayGoodbye(\"josh\"); \n\nit would return: " + sayGoodbye("josh")
+);
 
 /**
  * ### Challenge `temperatureCtoF`
- * 
+ *
  * @instructions
  * This function should take an a temperature in celsius as an argument,
- * and return the temperature in fahrenheit, rounded to the nearest whole number. 
- * 
+ * and return the temperature in fahrenheit, rounded to the nearest whole number.
+ *
  * For example, if we invoke `temperatureCtoF`
  * passing 24 as the argument,
  * the returned value should be: 75
- * 
+ *
  * Hint 1: The formula for converting celsius to fahrenheit is t*9/5 + 32 where t is the temperature in celsius.
- * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
+ * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how.
 */
-function temperatureCtoF(/* code here */) {
-  /* code here */
+function temperatureCtoF(t) {
+  return (Math.round(t*9/5 + 32))
 }
+console.log("\n\n*****   Challenge temperatureCtoF *****\nif you call the function: \n\n\ttemperatureCtoF(25); \n\nit would return: " + temperatureCtoF(25) );
 
 /**
  * ### Challenge `temperatureInF`
- * 
+ *
  * @instructions
  * This function should take an a temperature and a unit (either 'F' or 'C') as arguments,
- * and return the temperature in fahrenheit, rounded to the nearest whole number. 
- * 
+ * and return the temperature in fahrenheit, rounded to the nearest whole number.
+ *
  * For example, if we invoke `temperatureInF`
  * passing 88, 'F' as the arguments,
  * the returned value should be: '88F'
- * 
+ *
  * If we invoke `temperatureInF`
  * passing 24, 'C' as the arguments,
  * the returned value should be: '75F'
- * 
+ *
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(tempValue, measurement) {
+  if (measurement[0] === "C" || measurement[0] === "c" ){
+    return (String(Math.round(tempValue*9/5 + 32)) + "F");
+  }
+  else if (measurement[0] === "F" || measurement[0] === "f" ){
+    return (String(tempValue) + measurement)
+  }
+  else{
+    return('Undefined. There was an error with your units that you inputed')
+  }
 }
+console.log("\n\n*****   Challenge temperatureInF *****\nif you call the function: \n\n\ttemperatureInF(25, \"C\"); \n\nit would return: " + temperatureInF(25, "C") + "\n\nand if you call the function: \n\n\ttemperatureInF(25, \"F\"); \n\nit would return: " + temperatureInF(25, "F"));
 
 
 /**
  * ### Challenge `makePersonObject`
- * 
+ *
  * @instructions
  * This function should take an id, a name and an email as arguments,
  * and return an object with `id`, `name` and `email` properties.
- * 
+ *
  * For example, if we invoke `makePersonObject`
  * passing 5, 'Leia' and 'leia@leia.com' as arguments,
  * the returned value should look like:
@@ -96,66 +117,87 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(Id, Name, Email) {
+  const person = {
+    id: Id, name: Name, email: Email
+  };
+  return person;
 }
+console.log("\n\n*****   Challenge makePersonObject *****\nif you call the function: \n\n\t makePersonObject(3, \"jojo\", \"3@42.org\"); \n\nit would return: ")
+console.log(makePersonObject(3, "jojo", "3@42.org"));
 
 /**
  * ### Challenge `getName`
- * 
+ *
  * @instructions
  * This function takes as its only argument
  * an object containing a `name` property,
  * and return a string that reads `Hello, my name is {name}`,
  * where `{name}` is the name stored in the object.
- * 
+ *
  * For example, if we invoke `getName`
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(obj) {
+  return(`Hello, my name is ${obj.name}`);
 }
+
+console.log("\n\n*****   Challenge getName *****\nif you call the function: \n\n\t getName(makePersonObject(3, \"jojo\", \"3@42.org\")); \n\nit would return: ")
+console.log(getName(makePersonObject(3, "jojo", "3@42.org")));
 
 
 /**
  * ### Challenge `appleIndex`
- * 
+ *
  * @instructions
- * This function takes as its only argument an array 
+ * This function takes as its only argument an array
  * containing strings,
  * and returns the index in the array of the string 'apple'.
- * 
- * You may assume the string 'apple' will appear exactly 
+ *
+ * You may assume the string 'apple' will appear exactly
  * once in the array.
- * 
+ *
  * For example, if we invoke `appleIndex`
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+
+function appleIndex(arr) {
+  return(arr.indexOf("apple"));
 }
+console.log("\n\n*****   Challenge appleIndex *****\nif you call the function: \n\n\t appleIndex([ 'orange', 'grape', 'apple', 'banana', 'mango' ])); \n\nit would return: ")
+console.log(appleIndex([ 'orange', 'grape', 'apple', 'banana', 'mango' ]));
 
 /**
  * ### Challenge `isItAnApple`
- * 
+ *
  * @instructions
- * This function takes as its only argument an array 
+ * This function takes as its only argument an array
  * containing strings,
  * and returns an array of equal length containing the `true`
- * if the corresponding entry in the original array is 'apple' 
+ * if the corresponding entry in the original array is 'apple'
  * and `false` if it is anything else.
- * 
- * 
+ *
+ *
  * For example, if we invoke `isItAnApple`
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(arr) {
+  let returnArr = [];
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] === 'apple'){
+      returnArr[i] = true;
+    }
+    else{
+      returnArr[i] = false;
+    }
+  }
+  return returnArr;
 }
-
+console.log("\n\n*****   Challenge isItAnApple *****\nif you call the function: \n\n\t isItAnApple([ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] )); \n\nit would return: ")
+console.log(isItAnApple([ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ]))
 
 
 
@@ -180,10 +222,10 @@ var inventory = [
 
 /**
   * ### Example Array Challenge:
-  * 
+  *
   * @instructions
   * get3rdCar() should return the string `The is a Land Rover Defender Ice Edition`
-  * 
+  *
   *
   * NOTE: This example has been completed for you.
 **/
@@ -199,71 +241,90 @@ function get3rdCar(inventory) {
 
 /**
  * ### Challenge `getCarInfoByIndex`
- * 
+ *
  * @instructions
  * getCarInfoByIndex takes two arguments:
  *     (1) an array which is an inventory of cars like the preview above (see ⭐️ Preview Test Data ⭐️)
  *     (2) a number which is the desired index in the array.
  * getCarInfoByIndex returns a string in the format `This is a {car_make} {car_model}`
- * 
+ *
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const car = inventory[index];
+  return `The is a ${car.car_make} ${car.car_model}`;
 }
-
+console.log("\n\n*****   Challenge getCarInfoByIndex *****\nif you call the function: \n\n\t getCarInfoByIndex(inventory, 3); \n\nit would return: ")
+console.log(getCarInfoByIndex(inventory, 3));
 /**
  * ### Challenge `getLastCarInfo`
- * 
+ *
  * @instructions
  * getLastCarInfo takes a single argument:
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getLastCarInfo returns a string in the format `This is a {car_make} {car_model}
- * 
+ *
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(inventory) {
+  const lastCar = inventory[inventory.length - 1];
+  return `The is a ${lastCar.car_make} ${lastCar.car_model}`;
 }
+console.log("\n\n*****   Challenge getLastCarInfo *****\nif you call the function: \n\n\t getLastCarInfo(inventory); \n\nit would return: ")
+console.log(getLastCarInfo(inventory));
+
 
 /**
  * ### Challenge `getModelYears`
- * 
+ *
  * @instructions
  * We need the years from every car in the inventory!
  * getModelYears takes a single argument:
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(inventory) {
+  let years = [];
+  for(let i = 0; i < inventory.length; i++){
+    years[i] = inventory[i].car_year;
+  }
+  return years.sort();
 }
+
+console.log("\n\n*****   Challenge getModelYears *****\nif you call the function: \n\n\t getModelYears(inventory); \n\nit would return: ")
+console.log(getModelYears(inventory));
 
 /**
  * ### Challenge `getCarInfoById`
  *  * * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
  * COMPLETING ALL NON-STRETCH CHALLENGES IN THE REPOSITORY!
- * 
+ *
  * @instructions
  * getCarInfoById takes two arguments:
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  *     (2) a number which is the desired car id (see how each car has its own unique id).
  * getCarInfoById returns a string in the format `This is a {car_make} {car_model}
- * 
+ *
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, Id) {
+  for(let i = 0; i < inventory.length; i++){
+    if(Id == inventory[i].id){
+      return(`The is a ${inventory[i].car_make} ${inventory[i].car_model}`)
+    }
+  }
 }
+
+display("getCarInfoById", "inventory", "7", getCarInfoById(inventory, 7));
 
 /**
  * ### Challenge `getOlderCars`
  * * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
  * COMPLETING ALL NON-STRETCH CHALLENGES IN THE REPOSITORY!
- * 
+ *
  * @instructions
  * We need a utility to find older cars!
  * getOlderCars takes two arguments:
@@ -273,15 +334,25 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, maxYear) {
+  let olderCars = []
+  for(let i = 0; i < inventory.length; i++){
+    if(maxYear >= inventory[i].car_year){
+      olderCars += inventory[i];
+    }
+  }
+  return olderCars;
 }
+let ans = getOlderCars(inventory, 2000);
+display("getOlderCars", "inventory", "2000", ans);
+console.log(getOlderCars(inventory, 2000))
+
 
 /**
  * ### Challenge `getGermanCars`
  * * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
  * COMPLETING ALL NON-STRETCH CHALLENGES IN THE REPOSITORY!
- * 
+ *
  * @instructions
  * We need a utility to find German cars!
  * getGermanCars takes a single argument:
@@ -298,7 +369,7 @@ function getGermanCars(/* code here */) {
  * ### Challenge `carMaker`
  * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
  * COMPLETING ALL NON-STRETCH CHALLENGES IN THE REPOSITORY!
- * 
+ *
  * @instructions
  * This function takes a single odometer argument (a number) and returns an object.
  * The returned object has the following characteristics:
